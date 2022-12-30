@@ -1,0 +1,185 @@
+/* CUSTOM PROPERTIES */
+:root {
+  --clr-neutral-200: #f1d2bf;
+  --clr-neutral-800: #232323;
+  --clr-accent-purple: #8a2387;
+  --clr-accent-pink: #e94057;
+  --clr-accent-orange: #f27121;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(to bottom, var(--clr-accent-purple), var(--clr-accent-pink), var(--clr-accent-orange));
+  font-size: clamp(1rem, 0.6250rem + 1.6667vw, 1.5rem);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  color: var(--clr-neutral-800);
+}
+
+input,
+button {
+  font: inherit;
+}
+
+/* UTILITY CLASSES */
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  background-color: #232323B3;
+}
+
+/* TYPOGRAPHY */
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 0.4375rem + 5.8333vw, 3.5rem);
+  color: var(--clr-neutral-200);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 0.5625rem + 4.1667vw, 2.75rem);
+}
+
+.author {
+  font-style: italic;
+}
+
+.book-pair .author .title:hover {
+  color: var(--clr-neutral-200);
+}
+
+.booklistBtn i {
+  color: var(--clr-accent-purple);
+}
+
+.booklistBtn i:hover,
+.booklistBtn i:focus {
+  color: #d883d5;
+  filter: drop-shadow(1px 2px #23232399);
+}
+
+/* LAYOUT */
+
+.container {
+  width: 90vw;
+  margin-inline: auto;
+}
+
+h2,
+form {
+  margin-bottom: .5em;
+}
+
+form,
+input,
+button {
+  border-radius: .25em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+  justify-content: center;
+  align-items: center;
+  padding: .5em;
+  border: .05em solid #23232333;
+}
+
+input {
+  grid-area: input;
+  padding: .25em; 
+  border: none;
+  background-color: #23232366;
+  color: var(--clr-neutral-200);
+}
+
+button {
+  width: 15ch;
+  margin-inline: auto;
+  padding: .25em 0;
+  border: none;
+  background-color: var(--clr-accent-purple);
+  color: var(--clr-neutral-200);
+  cursor: pointer;
+  transition: all 1s;
+}
+
+button:focus,
+button:hover {
+  opacity: .65;
+  scale: 1.1;
+}
+
+i {
+  margin-right: .25em;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.books-in-order {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book-pair {
+  display: grid;
+  grid-template-areas: "author title btns";
+  /* grid-template-columns: repeat(2fr, 4fr, 1fr); */
+  gap: .5em;
+  justify-content: start;
+  width: 90%;
+  padding: .25em 0;
+  border-bottom: .05em solid #f2712166;
+}
+
+.author {
+  grid-area: author;
+  width: 20vw;
+}
+
+.title {
+  grid-area: title;
+  width: 50vw;
+}
+
+.bookBtns {
+  grid-area: btns;
+  display: flex;
+  justify-content: space-between;
+  width: 10vw;
+}
+
+.booklistBtns {
+  display: inline-block;
+}
+
+.booklistBtn {
+  width: 1.5em;
+  padding: 0 .05em;
+  border: none;
+  background: transparent;
+}
+
+.booklistBtn i {
+  margin: 0;
+}
