@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
   height: 100%;
   background: linear-gradient(to bottom, var(--clr-accent-purple), var(--clr-accent-pink), var(--clr-accent-orange));
@@ -81,9 +85,25 @@ h2 {
   margin-inline: auto;
 }
 
+h1,
 h2,
-form {
+form,
+div {
   margin-bottom: .5em;
+}
+
+.signin {
+  display: flex;
+  justify-content: space-between;
+  width: 10em;
+  margin-inline: auto;
+}
+
+.signin button {
+  width: 2.25em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--clr-accent-orange);
 }
 
 form,
@@ -99,7 +119,6 @@ form {
   justify-content: center;
   align-items: center;
   padding: .5em;
-  border: .05em solid #23232333;
 }
 
 input {
