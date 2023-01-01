@@ -30,16 +30,21 @@
           <button><i class="fa-solid fa-user-plus"></i>Signup</button>
         </form>
       </div>
+
       <div class="modal hidden" id="logInModal">
-        <button class="close-modal-btn">X</button>
+        <button id="closeLogInModalBtn">X</button>
         <form class="login">
           <div class="input-box">
             <label for="email">Email <i class="fa-solid fa-arrow-right"></i><input type="email" name="email" required></label></div>
           <div class="input-box">
             <label for="password">Password <i class="fa-solid fa-arrow-right"></i><input type="password" name="password" required></label></div>
-          <button id="logInModal"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</button>
+          <button id="logInModalAction"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</button>
         </form>
-        <button id="logOutModal"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+      </div>
+
+      <div class="modal hidden" id="logOutModal">
+        <button id="closeLogOutModalBtn">X</button>
+        <button id="logOutModalBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
       </div>
     </div>
   </div>

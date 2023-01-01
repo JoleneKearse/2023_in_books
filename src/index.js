@@ -1,17 +1,33 @@
-// open modals
+// modal references
 const overlay = document.getElementById("overlay");
-const closeSignUpModal = document.getElementById("closeSignUpModal");
-const signUp = document.getElementById("signUpModal");
-const signUpBtn = document.getElementById("signUpModalBtn");
+const signUpModal = document.getElementById("signUpModal");
+const logInModal = document.getElementById("logInModal");
+const logOutModal = document.getElementById("logOutModal");
 
-closeSignUpModal.addEventListener("click", () => {
-  console.log(`clicked`);
-  signUp.classList.add("hidden");
+// sign up modal controls
+document.getElementById("signUpModalBtn").addEventListener("click", () => {
+  signUpModal.classList.remove("hidden");
+  overlay.style.backgroundColor = "#232323B3";
+});
+document.getElementById("closeSignUpModal").addEventListener("click", () => {
+  signUpModal.classList.add("hidden");
   overlay.style.backgroundColor = "transparent";
 });
-
-signUpBtn.addEventListener("click", () => {
-  console.log("clicked");
-  signUp.classList.remove("hidden");
+// log in modal controls
+document.getElementById("logInModalBtn").addEventListener("click", () => {
+  logInModal.classList.remove("hidden");
   overlay.style.backgroundColor = "#232323B3";
+});
+document.getElementById("closeLogInModalBtn").addEventListener("click", () => {
+  logInModal.classList.add("hidden");
+  overlay.style.backgroundColor = "transparent";
+});
+// log out modal controls
+document.getElementById("logOutModalBtn").addEventListener("click", () => {
+  logOutModal.classList.remove("hidden");
+  overlay.style.backgroundColor = "#232323B3";
+});
+document.getElementById("closeLogOutModalBtn").addEventListener("click", () => {
+  logOutModal.classList.add("hidden");
+  overlay.style.backgroundColor = "transparent";
 });

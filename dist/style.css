@@ -199,9 +199,15 @@ input {
   color: var(--clr-neutral-200);
 }
 
+#logOutModal {
+  padding: .5em;
+}
+
 /* buttons */
 
-#closeSignUpModal {
+#closeSignUpModal,
+#closeLogInModalBtn,
+#closeLogOutModalBtn {
   margin-bottom: 0;
   background: none;
   color: var(--clr-accent-orange);
