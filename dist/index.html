@@ -9,43 +9,41 @@
   <title>2023 in Books</title>
 </head>
 <body>
-  <div class="container">
-    <h1>2023 in Books</h1>
-
-    <div class="signin">
-      <button id="signUpModalBtn"><i class="fa-solid fa-user-plus"><p class="sr-only">Sign Up</p></i></button>
-
-      <button class="center" id="logInModalBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i><p class="sr-only">Log In</p></button>
-      
-      <button class="logout" id="logOutModalBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><p class="sr-only">Log Out</p></button>
-    </div>
-
-    <div class="signupModal">
-      <form class="signup">
-        <div class="input-box">
-          <label for="email">Email <i class="fa-solid fa-arrow-right"></i><input type="email" name="email" required></label></div>
-        
-        <div class="input-box">
-          <label for="password">Password <i class="fa-solid fa-arrow-right"></i><input type="password" name="password" required></label></div>
-  
-        <button><i class="fa-solid fa-user-plus"></i>Signup</button>
-      </form>
-    </div>
-
-    <div id="logInModal">
-      <form class="login">
-        <div class="input-box">
-          <label for="email">Email <i class="fa-solid fa-arrow-right"></i><input type="email" name="email" required></label></div>
-  
-        <div class="input-box">
-          <label for="password">Password <i class="fa-solid fa-arrow-right"></i><input type="password" name="password" required></label></div>
-  
-        <button id="logInModal"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</button>
-      </form>
-  
-      <button id="logOutModal"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+  <div id="overlay">
+    <div class="container">
+      <h1>2023 in Books</h1>
+      <div class="signin">
+        <button id="signUpModalBtn"><i class="fa-solid fa-user-plus"><p class="sr-only">Sign Up</p></i></button>
+        <button class="center" id="logInModalBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i><p class="sr-only">Log In</p></button>
+    
+        <button class="logout" id="logOutModalBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><p class="sr-only">Log Out</p></button>
+      </div>
+      <!-- MODALS -->
+      <div class="modal hidden" id="signUpModal">
+        <button id="closeSignUpModal">X</button>
+        <form class="signup">
+          <div class="input-box">
+            <label for="email">Email <i class="fa-solid fa-arrow-right"></i><input type="email" name="email" required></label></div>
+    
+          <div class="input-box">
+            <label for="password">Password <i class="fa-solid fa-arrow-right"></i><input type="password" name="password" required></label></div>
+          <button><i class="fa-solid fa-user-plus"></i>Signup</button>
+        </form>
+      </div>
+      <div class="modal hidden" id="logInModal">
+        <button class="close-modal-btn">X</button>
+        <form class="login">
+          <div class="input-box">
+            <label for="email">Email <i class="fa-solid fa-arrow-right"></i><input type="email" name="email" required></label></div>
+          <div class="input-box">
+            <label for="password">Password <i class="fa-solid fa-arrow-right"></i><input type="password" name="password" required></label></div>
+          <button id="logInModal"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</button>
+        </form>
+        <button id="logOutModal"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+      </div>
     </div>
   </div>
+
   <script src="bundle.js"></script>
 </body>
 </html>
