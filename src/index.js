@@ -22,7 +22,7 @@ const firebaseConfig = {
 };
 
 // initialize app
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 const auth = getAuth();
 
 // sign up modal controls
@@ -54,7 +54,7 @@ document.getElementById("closeLogOutModalBtn").addEventListener("click", () => {
 });
 
 // sign up
-const signUpForm = document.querySelector("signUp");
+const signUpForm = document.querySelector(".signup");
 signUpForm.addEventListener("submit", (e) => {
   e.preventDefault();
   // handle sign up with email and password
@@ -62,7 +62,7 @@ signUpForm.addEventListener("submit", (e) => {
   const password = signUpForm.password.value;
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log(`user created: ${cred.user}`);
+      console.log("user created: ", cred.user);
       signUpForm.reset();
     })
     .catch((err) => {
