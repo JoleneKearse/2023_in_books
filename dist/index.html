@@ -18,6 +18,21 @@
     
         <button class="logout" id="logOutModalBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><p class="sr-only">Log Out</p></button>
       </div>
+
+      <!-- add a book -->
+      <form class="add">
+        <div class="input-box">
+          <label for="title">Title <i class="fa-solid fa-arrow-right"></i><input type="text" name="title" required></label>
+        </div>
+        <div class="input-box">
+          <label for="author">Author <i class="fa-solid fa-arrow-right"></i><input type="text" name="author" required></label>
+        </div>
+        <button><i class="fa-solid fa-plus"></i>Add New Book</button>
+      </form>
+
+      <!-- booklist -->
+      <form id="booklist"></form>
+
       <!-- MODALS -->
       <div class="modal hidden" id="signUpModal">
         <button id="closeSignUpModal">X</button>
