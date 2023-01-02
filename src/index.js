@@ -64,8 +64,18 @@ signUpForm.addEventListener("submit", (e) => {
     .then((cred) => {
       console.log("user created: ", cred.user);
       signUpForm.reset();
+      signUpModal.classList.add("hidden");
+      overlay.style.backgroundColor = "transparent";
     })
     .catch((err) => {
+      if (err.message.includes("email-already-in-use")) {
+        alert(
+          "You've already signed up with this email. Please go to login. If you feel this is an error or need to reset your password, please email the app administrator at pharaohnutz@gmail.com"
+        );
+        signUpForm.reset();
+        signUpModal.classList.add("hidden");
+        overlay.style.backgroundColor = "transparent";
+      }
       console.log(err.message);
     });
 });
@@ -78,12 +88,38 @@ loginForm.addEventListener("submit", (e) => {
   const password = loginForm.password.value;
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log("user logged in: ", cred.user);
       loginForm.reset();
+      logInModal.classList.add("hidden");
+      overlay.style.backgroundColor = "transparent";
     })
     .catch((err) => {
       console.log(err.message);
+      if (err.message.includes("user-not-found")) {
+        alert(
+          "Uh oh, we either don't have you signed up or could you have possibly mistyped your email?"
+        );
+        loginForm.email.value = "";
+      } else if (err.message.includes("wrong-password")) {
+        alert("Uh oh, it seems your password is wrong");
+        loginForm.password.value = "";
+      } else {
+        alert(
+          "Uh oh, something went wrong. But don't worry send an email to the app administrator at pharaohnutz@gmail.com"
+        );
+        loginForm.reset();
+        logOutModal.classList.add("hidden");
+        overlay.style.backgroundColor = "transparent";
+      }
     });
 });
 
-// 
+// log out
+document
+  .getElementById("executeLogOutModalBtn")
+  .addEventListener("click", () => {
+    signOut(auth);
+    setTimeout(function () {
+      logOutModal.classList.add("hidden");
+      overlay.style.backgroundColor = "transparent";
+    }, 500);
+  });
