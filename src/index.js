@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getFirestore, collection } from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -24,6 +25,7 @@ const firebaseConfig = {
 // initialize app
 initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore();
 
 // sign up modal controls
 document.getElementById("signUpModalBtn").addEventListener("click", () => {
@@ -118,8 +120,12 @@ document
   .getElementById("executeLogOutModalBtn")
   .addEventListener("click", () => {
     signOut(auth);
-    setTimeout(function () {
+    setTimeout(() => {
       logOutModal.classList.add("hidden");
       overlay.style.backgroundColor = "transparent";
     }, 500);
   });
+
+// SET UP DATABASE
+// collection ref
+const colRef = collection(db, "books");
