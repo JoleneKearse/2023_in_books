@@ -204,6 +204,27 @@ input {
   padding: .5em;
 }
 
+.input-box {
+  display: flex;
+  gap: 1em;
+
+  /* justify-content: space-around; */
+  /* /* grid-template-areas: label input; */
+  /* grid-template-columns: 15vw 45vw; */ 
+  width: 50vw;
+  /* margin-inline: auto; */
+}
+
+.input-box > label {
+  /* grid-area: label; */
+  /* width: 15vw; */
+}
+
+.input-box input {
+  /* grid-area: input; */
+  /* width: 30vw; */
+}
+
 /* buttons */
 
 #closeSignUpModal,
