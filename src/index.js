@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -129,3 +129,12 @@ document
 // SET UP DATABASE
 // collection ref
 const colRef = collection(db, "books");
+// real time collection data
+const unsubCol = onSnapshot(colRef, (snapshot) => {
+  let books = []
+  snapshot.docs.
+})
+// display docs to page
+const booklist = document.getElementById('booklist')
+let booksHTML = ''
+books
