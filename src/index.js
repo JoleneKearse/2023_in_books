@@ -6,7 +6,12 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -22,7 +27,7 @@ const firebaseConfig = {
   appId: "1:54050475125:web:ad511e971d50fd845d3c3c",
 };
 
-// initialize app
+// initialize firebase app
 initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
@@ -130,11 +135,31 @@ document
 // collection ref
 const colRef = collection(db, "books");
 // real time collection data
-const unsubCol = onSnapshot(colRef, (snapshot) => {
-  let books = []
-  snapshot.docs.
-})
-// display docs to page
-const booklist = document.getElementById('booklist')
-let booksHTML = ''
-books
+getDocs(colRef)
+  .then((snapshot) => {
+    let books = [];
+    // for each snapshot add a custom object for each book in the array
+    snapshot.docs.forEach((doc) => {
+      // push to books array by using the data method on each then spreading them to the array
+      books.push({ ...doc.data(), id: doc.id });
+    });
+    const bookList = document.getElementById("booklist");
+    let booksHtml = "";
+    books.forEach((book) => {
+      booksHtml += `
+      <ul class="books-in-order">
+        <li class="book-pair">
+          <p class='author'>${book.author}<p>
+          <p class="title">${book.title}</p>
+          <div class="bookBtns">
+            <button class="booklistBtn" data-edit="${book.id}" id="edit${book.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="booklistBtn" data-delete="${book.id}" id="edit${book.id}"><i class="fa-solid fa-minus"></i></button>
+          </div>
+        </li>
+      </ul>`;
+    });
+    bookList.innerHTML = booksHtml;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
