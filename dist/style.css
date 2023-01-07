@@ -110,13 +110,32 @@ button {
   margin-inline: auto;
 }
 
-form {
-  display: flex;
+.add {
+  /* display: flex;
   flex-direction: column;
   gap: .25em;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  display: grid;
+  grid-template-areas: 
+    "label input"
+    "label input"
+    ". btn .";
+  gap: .25em;
+  justify-content: start;
+  width: 50vw;
+  margin-inline: auto;
   padding: .5em;
+}
+
+.add-label {
+  grid-area: label;
+  width: 15vw;
+}
+
+.add-input {
+  grid-area: input;
+  width: 35vw;
 }
 
 form input {
