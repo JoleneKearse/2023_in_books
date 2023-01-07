@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -144,10 +144,10 @@ getDocs(colRef)
       booksHtml += `
       <ul class="books-in-order">
         <li class="book-pair">
-          <p class='author'>${book.author}<p>
-          <p class="title">${book.title}</p>
+          <p class="author" contenteditable="true">${book.author}<p>
+          <p class="title" contenteditable="true">${book.title}</p>
           <div class="bookBtns">
-            <button class="booklistBtn" data-edit="${book.id}" id="edit${book.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="booklistBtn" data-edit="${book.id}" id="edit${book.id}" title="Change the author or title on the page, then double-click here to update your changes!"><i class="fa-solid fa-pen-to-square"></i></button>
             <button class="booklistBtn" data-delete="${book.id}" id="edit${book.id}"><i class="fa-solid fa-minus"></i></button>
           </div>
         </li>
@@ -158,3 +158,16 @@ getDocs(colRef)
   .catch((err) => {
     console.log(err.message);
   });
+
+// add a book
+const addBookForm = document.querySelector(".add");
+addBookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addDoc(colRef, {
+    author: addBookForm.author.value,
+    title: addBookForm.title.value,
+  }).then(() => {
+    addBookForm.reset();
+    getDocs(colRef);
+  });
+});
