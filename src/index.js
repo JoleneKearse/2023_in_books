@@ -6,7 +6,14 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -21,6 +28,7 @@ const firebaseConfig = {
   messagingSenderId: "54050475125",
   appId: "1:54050475125:web:ad511e971d50fd845d3c3c",
 };
+const bookList = document.getElementById("booklist");
 
 // initialize firebase app
 initializeApp(firebaseConfig);
@@ -138,7 +146,6 @@ getDocs(colRef)
       // push to books array by using the data method on each then spreading them to the array
       books.push({ ...doc.data(), id: doc.id });
     });
-    const bookList = document.getElementById("booklist");
     let booksHtml = "";
     books.forEach((book) => {
       booksHtml += `
@@ -148,7 +155,7 @@ getDocs(colRef)
           <p class="title" contenteditable="true">${book.title}</p>
           <div class="bookBtns">
             <button class="booklistBtn" data-edit="${book.id}" id="edit${book.id}" title="Change the author or title on the page, then double-click here to update your changes!"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="booklistBtn" data-delete="${book.id}" id="edit${book.id}"><i class="fa-solid fa-minus"></i></button>
+            <button class="booklistBtn"><i class="fa-solid fa-minus" data-delete="${book.id}" id="delete${book.id}"></i></button>
           </div>
         </li>
       </ul>`;
