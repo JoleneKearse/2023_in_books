@@ -6,7 +6,14 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 // modal references
 const overlay = document.getElementById("overlay");
@@ -21,6 +28,7 @@ const firebaseConfig = {
   messagingSenderId: "54050475125",
   appId: "1:54050475125:web:ad511e971d50fd845d3c3c",
 };
+const bookList = document.getElementById("booklist");
 
 // initialize firebase app
 initializeApp(firebaseConfig);
@@ -138,7 +146,6 @@ getDocs(colRef)
       // push to books array by using the data method on each then spreading them to the array
       books.push({ ...doc.data(), id: doc.id });
     });
-    const bookList = document.getElementById("booklist");
     let booksHtml = "";
     books.forEach((book) => {
       booksHtml += `
@@ -169,5 +176,18 @@ addBookForm.addEventListener("submit", (e) => {
   }).then(() => {
     addBookForm.reset();
     getDocs(colRef);
+    window.location.reload();
   });
+});
+
+// delete a book
+bookList.addEventListener("click", (e) => {
+  if (e.target.dataset.delete) {
+    e.preventDefault();
+    console.log("click");
+    console.log(e.target.dataset.delete);
+    const docRef = doc(db, "books", e.target.dataset.delete);
+    deleteDoc(docRef);
+    getDocs(colRef);
+  }
 });
