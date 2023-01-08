@@ -169,5 +169,21 @@ addBookForm.addEventListener("submit", (e) => {
   }).then(() => {
     addBookForm.reset();
     getDocs(colRef);
+    window.location.reload();
   });
+});
+
+// delete & edit a book
+bookList.addEventListener("click", function (e) {
+  if (e.target.dataset.delete) {
+    e.preventDefault();
+    console.log("clicked: ", e.target.dataset.delete);
+    const docRef = doc(db, "books", e.target.dataset.delete);
+    deleteDoc(docRef).then(() => {
+      getDocs(colRef);
+      window.location.reload();
+    });
+  } else {
+    console.log("booklist clicked");
+  }
 });
