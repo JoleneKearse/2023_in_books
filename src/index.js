@@ -155,7 +155,7 @@ getDocs(colRef)
           <p class="title" contenteditable="true">${book.title}</p>
           <div class="bookBtns">
             <button class="booklistBtn" data-edit="${book.id}" id="edit${book.id}" title="Change the author or title on the page, then double-click here to update your changes!"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="booklistBtn" data-delete="${book.id}" id="edit${book.id}"><i class="fa-solid fa-minus"></i></button>
+            <button class="booklistBtn"><i class="fa-solid fa-minus" data-delete="${book.id}" id="delete${book.id}"></i></button>
           </div>
         </li>
       </ul>`;
@@ -181,13 +181,16 @@ addBookForm.addEventListener("submit", (e) => {
 });
 
 // delete a book
-bookList.addEventListener("click", (e) => {
+bookList.addEventListener("click", function (e) {
   if (e.target.dataset.delete) {
     e.preventDefault();
-    console.log("click");
-    console.log(e.target.dataset.delete);
+    console.log("clicked: ", e.target.dataset.delete);
     const docRef = doc(db, "books", e.target.dataset.delete);
-    deleteDoc(docRef);
-    getDocs(colRef);
+    deleteDoc(docRef).then(() => {
+      getDocs(colRef);
+      window.location.reload();
+    });
+  } else {
+    console.log("booklist clicked");
   }
 });
